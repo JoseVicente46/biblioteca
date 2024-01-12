@@ -50,3 +50,25 @@ Route::get('tabla/{id?}', function ($id=2) {
         echo $id . " x " . $i . " = " . $id*$i . "<br>";
     }
 })->where("id","[0-9]+");
+
+Route::get('prueba', function () {
+    return view("prueba");
+});
+
+Route::get('inicio', function () {
+    $nombre = "Paki";
+    return view("inicio",compact("nombre"));
+})->name("inicio");
+
+Route::get('listado', function() {
+    $libros = array(
+    array("titulo" => "El juego de Ender",
+    "autor" => "Orson Scott Card"),
+    array("titulo" => "La tabla de Flandes",
+    "autor" => "Arturo Pérez Reverte"),
+    array("titulo" => "La historia interminable",
+    "autor" => "Michael Ende"),
+    array("titulo" => "El Señor de los Anillos",
+    "autor" => "J.R.R. Tolkien"));
+    return view('listado', compact('libros'));
+})->name('listado_libros');
